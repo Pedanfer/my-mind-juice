@@ -1,6 +1,6 @@
 import { ThemeProvider, Typography } from "@mui/material";
 import theme from "./theme";
-import ResponsiveAppBar from "../components/nav-bar";
+import ResponsiveAppBar from "../components/nav-bar/nav-bar";
 
 export default function Home() {
   return (
