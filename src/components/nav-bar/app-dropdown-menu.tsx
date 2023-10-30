@@ -1,5 +1,7 @@
-import { Box, IconButton, Menu, Typography } from "@mui/material";
+import { Box, IconButton, Menu, MenuItem } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import React, { FC } from "react";
+import StyledLink from "../generics/StyledLink";
 
 const AppDropDownMenu: FC<{
   handleOpenNavMenu: (event: React.MouseEvent<HTMLElement>) => void;
@@ -15,7 +17,9 @@ const AppDropDownMenu: FC<{
         aria-controls="menu-appbar"
         aria-haspopup="true"
         onClick={props.handleOpenNavMenu}
-      ></IconButton>
+      >
+        <MenuIcon />
+      </IconButton>
       <Menu
         id="menu-appbar"
         anchorEl={props.anchorElNav}
@@ -35,14 +39,9 @@ const AppDropDownMenu: FC<{
         }}
       >
         {props.pages.map((page) => (
-          <Typography
-            key={page}
-            textAlign="center"
-            component="a"
-            href={`/${page.toLowerCase()}`}
-          >
-            {page}
-          </Typography>
+          <MenuItem key={page} onClick={props.handleCloseNavMenu}>
+            <StyledLink text={page} url={`/${page.toLowerCase()}`} />
+          </MenuItem>
         ))}
       </Menu>
     </Box>

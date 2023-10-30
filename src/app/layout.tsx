@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@fontsource/nunito/300.css";
 import "@fontsource/nunito/700.css";
 import "./globals.css";
+import ResponsiveAppBar from "@/components/nav-bar/nav-bar";
+import CustomThemeProvider from "./theme";
 
 export const metadata: Metadata = {
   title: "Mymindjuice.com",
@@ -16,7 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <CustomThemeProvider>
+        <body>
+          <ResponsiveAppBar />
+          {children}
+        </body>
+      </CustomThemeProvider>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import SvgIcon from "@mui/material/SvgIcon";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,6 +11,7 @@ import Button from "@mui/material/Button";
 import Psychology from "@mui/icons-material/Psychology";
 import AppDropDownMenu from "./app-dropdown-menu";
 import UserDropDownMenu from "./user-drop-down-menu";
+import Link from "next/link";
 
 const pages = ["Creators", "Books", "Videos", "About"];
 const userOptions = ["Profile", "Logout"];
@@ -27,15 +29,14 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" sx={{ boxShadow: 0 }}>
-      <Container maxWidth="xl">
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
           <Psychology
             sx={{
               display: {
                 xs: "none",
                 md: "flex",
-                width: "3%",
-                height: "3%",
+                fontSize: 48,
               },
               mr: 1,
             }}
@@ -43,7 +44,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component={Link}
             href="/"
             sx={{
               mr: 2,
@@ -74,7 +75,7 @@ function ResponsiveAppBar() {
           <Typography
             variant="h5"
             noWrap
-            component="a"
+            component={Link}
             href="/"
             sx={{
               mr: 2,
@@ -92,7 +93,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                component="a"
+                component={Link}
                 href={`/${page.toLowerCase()}`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "black", display: "block" }}

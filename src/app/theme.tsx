@@ -2,6 +2,9 @@
 import "./globals.css";
 
 import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material";
+
+// Needed to use custom colors with TS
 
 // declare module "@mui/material/styles" {
 //   interface Palette {
@@ -21,6 +24,16 @@ import { createTheme } from "@mui/material/styles";
 // }
 
 let theme = createTheme({
+  components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: "#3D3D3D",
+          textDecoration: "none",
+        },
+      },
+    },
+  },
   palette: {
     text: { primary: "#3D3D3D", secondary: "#317A67" },
     primary: {
@@ -52,4 +65,8 @@ let theme = createTheme({
 //   },
 // });
 
-export default theme;
+const CustomThemeProvider = ({ children }: { children: React.ReactNode }) => {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
+
+export default CustomThemeProvider;
